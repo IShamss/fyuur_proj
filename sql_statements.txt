@@ -1,0 +1,75 @@
+Used SQL statements--->
+
+insert into "Venue" (id,name,genres,address,city,state,phone,website,facebook_link,seeking_talent,seeking_description,image_link) values 
+(2,'The Dueling Pianos Bar','Classical,R&B,Hip-Hop','335 Delancey Street','New York',
+'NY','914-003-1132','https://www.theduelingpianos.com','https://www.facebook.com/theduelingpianos',
+False,'','https://images.unsplash.com/photo-1497032205916-ac775f0649ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80'),
+(3,'Park Square Live Music & Coffee','Rock n Roll,Jazz,Classical,Folk','34 Whiskey Moore Ave',
+'San Francisco','CA','415-000-1234','https://www.parksquarelivemusicandcoffee.com',
+'https://www.facebook.com/ParkSquareLiveMusicAndCoffee',False,'','https://images.unsplash.com/photo-1485686531765-ba63b07845a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=747&q=80');
+
+
+
+insert into "Artist" (id,name,genres,city,state,phone,website,facebook_link,seeking_venue,seeking_description
+,image_link) values
+(4,'Guns N Petals','Rock n Roll','San Francisco','CA','326-123-5000','https://www.gunsnpetalsband.com',
+'https://www.facebook.com/GunsNPetals',True,'Looking for shows to perform at in the San Francisco Bay Area!',
+'https://images.unsplash.com/photo-1549213783-8284d0336c4f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80'),
+(5,'Matt Quevedo','Jazz','New York','NY','300-400-5000','','https://www.facebook.com/mattquevedo923251523',
+False,'','https://images.unsplash.com/photo-1495223153807-b916f75de8c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80'),
+(6,'The Wild Sax Band','Jazz,Classical','San Francisco','CA','432-325-5432','','',False,'','https://images.unsplash.com/photo-1558369981-f9ca78462e61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=794&q=80');
+
+
+
+insert into "Show" (venue_id,artist_id,start_time) values
+(1,4,'2019-05-21T21:30:00.000Z'),(3,5,'2019-06-15T23:00:00.000Z'),
+(3,6,'2035-04-01T20:00:00.000Z'),(3,6,'2035-04-08T20:00:00.000Z'),
+(3,6,'2035-04-15T20:00:00.000Z');
+
+SQL statements:
+result = db.engine.execute("<sql here>")
+
+According to order in app.py file
+SELECT DISTICT v.city,v.state FROM "Venue" AS V;
+"SELECT * FROM "Venue" AS v WHERE v.name LIKE '%{}%' ".format(search_term)
+"SELECT * FROM "Venue" AS v WHERE v.id={}".format(venue_id)
+"SELECT * FROM "Show" AS s WHERE s.start_time> {} AND s.venue_id = {}".format(datetime.datetime.now())
+The following 2 statements are repeated twice in for loops:
+"SELECT image_link FROM "Artist" AS a WHERE a.id ={}".format(show.artist_id)
+"SELECT name FROM "Artist" AS a WHERE a.id ={}".format(show.artist_id)
+"SELECT * FROM "Show" AS s WHERE s.start_time< {} AND s.venue_id = {}".format(datetime.datetime.now())
+"INSERT INTO "Venue" (name,genres,address,city,state,phone,facebook_link,image_link)
+VALUES ({},{},{},{},{},{},{},{})".format(venue_form['name'],
+','.join(new_list),venue_form['address'],venue_form['city'],
+venue_form['state'],venue_form['phone'],venue_form['facebook_link'],
+venue_form['image_link'])
+"DELETE FROM "Venue" AS v WHERE v.id={}".format(venue_id)
+SELECT a.id, a.name FROM "Artist" AS a
+"SELECT * FROM "Artist" AS a WHERE a.name LIKE '%{}%' ".format(search_term)
+"SELECT * FROM "Artist" AS a WHERE a.id={}".format(artist_id)
+"SELECT * FROM "Show" AS s WHERE s.start_time> {} AND s.venue_id = {}".format(datetime.datetime.now())
+The following 2 statements are repeated twice in for loops:
+"SELECT image_link FROM "Venue" AS v WHERE v.id ={}".format(show.artist_id)
+"SELECT name FROM "Venue" AS v WHERE v.id ={}".format(show.artist_id)
+"SELECT * FROM "Show" AS s WHERE s.start_time< {} AND s.venue_id = {}".format(datetime.datetime.now())
+"SELECT * FROM "Artist" AS a WHERE a.id={}".format(artist_id)
+"SELECT * FROM "Artist" AS a WHERE a.id={}".format(artist_id)
+"SELECT * FROM "Venue" AS v WHERE v.id={}".format(venue_id)
+"SELECT * FROM "Venue" AS v WHERE v.id={}".format(venue_id)
+SELECT * FROM "Show"
+"SELECT v.name FROM "Venue" AS v WHERE v.id={}".format(show.venue_id)
+"SELECT a.name FROM "Artist" AS a WHERE a.id={}".format(show.artist_id)
+"SELECT a.image_link FROM "Artist" AS a WHERE a.id={}".format(show.artist_id)
+The Previous statements are implemented with for loops instead of joins for simplicity
+but here are the joins version
+"SELECT v.name,a.name,a.image_link FROM "Artist" a 
+JOIN "Show" s ON s.artist_id = a.id JOIN "Venue" v ON
+v.id = s.venue_id"
+
+
+
+
+
+
+
+
